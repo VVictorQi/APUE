@@ -1,0 +1,6 @@
+a write t ostdout
+before fork
+pid=20833 	 glob=7 	 val =89
+ before fork
+pid=20834 	 glob=7 	 val =89
+ 

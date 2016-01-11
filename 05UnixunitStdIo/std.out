@@ -1,0 +1,5 @@
+enter any character : 
+stream =stdin ,fully buffered, buffered size =4096 
+stream =stdout ,fully buffered, buffered size =4096 
+stream =stderr ,unbuffered, buffered size =1 
+stream =/etc/passwd ,fully buffered, buffered size =4096 

@@ -1,0 +1,18 @@
+#include<stdio.h>
+int f1(int val)
+{
+	int num=0;
+	int *ptr=&num;
+	if(val==0)
+	{
+		int val=5;
+		ptr=&val;
+	}
+	return (*ptr+1);
+}
+int main(void)
+{
+	printf("hello world !\n");
+	printf("%d",f1(1));
+	exit(0);
+}

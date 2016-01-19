@@ -22,7 +22,7 @@ int main(int argc,char **argv)
 	}
 	else if (pid ==0 )
 	{
-		if(execlp("ceshi.sh","only 1 arg",(char*)0)<0)
+		if(execlp("~/linuxshell/ceshi.sh","only 1 arg",(char*)0)<0)
 			err_sys("execlp error");
 	}
 	exit(0);

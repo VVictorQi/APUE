@@ -4,7 +4,7 @@
 #include<setjmp.h>
 #include<time.h>
 
-
+//关于setjmp系列函数就是说在信号处理程序中使用了siglongjmp函数就应该使用过一种保护机制。就是仅在调用sigsetjmp之后将变量canjump置非零值。在信号处理程序中检测此变量，当他非零时才调用siglongjmp函数返回main主函数，这提供了一种保护机制，让跳转缓冲jmpbuf在sigsetjmp尚未初始化的时候，防止调用信号处理函数，但是在一般的c代码中并不需要这种保护机制，但是信号不行，因为信号随时有可能发生
 Sigfunc* signal (int signo,Sigfunc*func)
 {
     struct sigaction act,oact;

@@ -20,7 +20,8 @@ sigset_t mask;
 
 //不知道其他人有没有遇到我这种情况 lockfile函数无法打开，然后man了一下发现并没有lockfile 
 //这个函数，但是在网上查找的资源是有lockfile函数的 ，系统是centos ，可能有关于系统差异吧
-//虽然都符合poxis标准
+//虽然都符合poxis标准，在unbutu下测试也没有，lockfile函数应该是作者实现的函数，或者如今被标准废弃
+//但是显然书籍版本比较新所以函数应该存在。
 extern int lockfile(int);
 
 void daemonize(const char *cmd)

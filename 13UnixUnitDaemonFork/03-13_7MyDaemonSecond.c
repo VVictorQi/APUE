@@ -22,8 +22,16 @@ sigset_t mask;
 //这个函数，但是在网上查找的资源是有lockfile函数的 ，系统是centos ，可能有关于系统差异吧
 //虽然都符合poxis标准，在unbutu下测试也没有，lockfile函数应该是作者实现的函数，或者如今被标准废弃
 //但是显然书籍版本比较新所以函数应该存在。
-extern int lockfile(int);
 
+int lockfile(int fd)
+{                   
+    struct flock fl;
+    fl.l_type=F_WRLCK;
+    fl.l_start=0;
+    fl.l_whence=SEEK_SET;
+    fl.l_len=0;
+    return fcntl(fd,F_SETLK,&fl);
+}
 void daemonize(const char *cmd)
 {
     int                 i,fd0,fd1,fd2;

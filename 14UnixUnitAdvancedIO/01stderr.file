@@ -1,0 +1,3 @@
+read 50000 bytes
+ nwrite=50000,errno=0
+fcntl F_SETFL error: Invalid argument

@@ -43,7 +43,7 @@ int main (void)
         lockabyte("parent", fd,1);
         TELL_CHILD(pid);
         WAIT_CHILD();
-        lockabyte("parent", fd,1);
+        lockabyte("parent", fd,0);
     }
     exit(0);
 }

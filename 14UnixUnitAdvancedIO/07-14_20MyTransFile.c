@@ -38,7 +38,7 @@ int  main(int argc ,char ** argv)
     if((ofd=open(argv[2],O_RDWR|O_CREAT|O_TRUNC,FILE_MODE))<0)
         err_sys("can't create  file %s",argv[2]);
 
-    while(n=read(ifd,buf,sizeof(buf))>0)
+    while((n=read(ifd,buf,BSZ))>0)
     {
         for(i=0;i<n;i++)
         {

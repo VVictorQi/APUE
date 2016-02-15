@@ -35,10 +35,10 @@ int main(void)
     else if(pid1==0)
     {
         if(lock_reg(fd,F_SETLK,F_RDLCK,0,SEEK_SET,0)<0)
-            err_sys("child 1: can't read_lock file");
-        printf("child 1:obtained read lock on file ");
+            err_sys("child 1: can't read_lock file\n");
+        printf("child 1:obtained read lock on file \n");
         pause();
-        printf("child 1: exit after pause");
+        printf("child 1: exit after pause\n");
         exit(0);
     }
     else 
@@ -53,10 +53,10 @@ int main(void)
     else if(pid2==0)
     {
         if(lock_reg(fd,F_SETLK,F_RDLCK,0,SEEK_SET,0)<0)
-            err_sys("child 2: can't read_lock file");
-        printf("child 2:obtained read lock on file ");
+            err_sys("child 2: can't read_lock file\n");
+        printf("child 2:obtained read lock on file\n ");
         pause();
-        printf("child 2: exit after pause");
+        printf("child 2: exit after pause\n");
         exit(0);
     }
     else 
@@ -71,9 +71,12 @@ int main(void)
     }
     else if(pid3==0)
     {
-        if(lock_reg(fd,F_SETLK,F_RDLCK,0,SEEK_SET,0)<0)
-            err_sys("child 3: can't read_lock file");
-        printf("child 3:obtained read lock on file ");
+        if(lock_reg(fd,F_SETLK,F_WRLCK,0,SEEK_SET,0)<0)
+            err_sys("child 3: can't  set write_lock file...\n");
+        printf("child 3:about to block in write_lock...\n");
+        if(lock_reg(fd,F_SETLKW,F_WRLCK,0,SEEK_SET,0)<0)
+            err_sys("child 3  can't write-lock file...\n");
+        printf("child 3 returned and got writr lock ???....\n");
         pause();
         printf("child 3: exit after pause");
         exit(0);

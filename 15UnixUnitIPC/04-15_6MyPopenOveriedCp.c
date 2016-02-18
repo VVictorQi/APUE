@@ -9,6 +9,7 @@
 #include<sys/wait.h>
 
 #define     PAGER   "${PAGER:-more}" //环境变量
+//宏定义的意思是，如果shell变量PAGER已经定义，切其值非空，就使用这个值，否则使用字符串more
 int main(int argc,char **argv)
 {
     char line[MAXLINE];

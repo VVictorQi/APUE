@@ -13,5 +13,5 @@ int set_cloexec(int fd)
     if((val=fcntl(fd,F_GETFD,0))<0)
         return -1;
     val |=FD_CLOEXEC;
-    return(fcntl(fd,F_SETED,val));
+    return(fcntl(fd,F_SETFD,val));
 }

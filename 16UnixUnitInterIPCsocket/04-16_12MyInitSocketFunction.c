@@ -9,7 +9,7 @@
 #include<errno.h>
 #include<sys/socket.h>
 
-int initsever(int type,const struct sockaddr *addr,socklen_t  alen)
+int initsever(int type,const struct sockaddr *addr,socklen_t  alen,int qlen)
 {
     int fd;
     int err=0;

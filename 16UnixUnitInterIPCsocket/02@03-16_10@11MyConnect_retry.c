@@ -25,11 +25,11 @@ int connect_retry(int sockfd,const  struct  sockaddr *addr,socklen_t alen)
 }
 //因此如果connect失败，可迁移的应用程序需要关闭套接字，如果想重试，必须打开一个新的套接字。因此有了下面这个新的
 //函数
-int  connect_retryExtern(int domain,int type,int protocol,const struct sockaddr*addr,socklen_alen)
+int  connect_retryExtern(int domain,int type,int protocol,const struct sockaddr*addr,socklen_t alen)
 {
     int numsec,fd;
 
-    for(numsec=1;numsec<=MAXSLEEP,numsec<<=1)
+    for(numsec=1;numsec<=MAXSLEEP;numsec<<=1)
     {
         if((fd=socket(domain,type,protocol))<0)
             return(-1);

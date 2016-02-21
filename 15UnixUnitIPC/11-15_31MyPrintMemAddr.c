@@ -36,7 +36,7 @@ int main(void)
     //利用shmget获得一个共享内存标识符，现在shmid等同于共享内存标志。
     if((shmptr=shmat(shmid,0,0))==(void*)-1)
         err_sys("shmat error");
-    //利用shmat连接到他的地址空间中
+    //  利用shmat连接到他的地址空间中
     printf("shared memory  attached from %p  to %p \n",(void*)shmptr,(void*)shmptr+SHM_SIZE);
 
     if(shmctl(shmid,IPC_RMID,0)<0)//利用shmctl对共享内存进行操作。其中IPC_RMID是删除标志

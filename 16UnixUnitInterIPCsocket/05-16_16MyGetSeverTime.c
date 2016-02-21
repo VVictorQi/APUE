@@ -55,7 +55,7 @@ int main(int argc,char ** argv)
     hint.ai_canonname=NULL;
     hint.ai_addr=NULL;
     hint.ai_next=NULL;
-    if((err=getaddrinfo(argv[1],"runtime",&hint,&alist))!=0)
+    if((err=getaddrinfo(argv[1],"ruptime",&hint,&alist))!=0)
         err_quit("getaddrinfo error %s",gai_strerror(err));
     for(aip=alist;aip!=NULL;aip=aip->ai_next)
     {

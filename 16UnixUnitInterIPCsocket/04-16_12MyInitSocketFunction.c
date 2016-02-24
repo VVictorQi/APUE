@@ -9,7 +9,7 @@
 #include<errno.h>
 #include<sys/socket.h>
 
-int initsever(int type,const struct sockaddr *addr,socklen_t  alen,int qlen)
+int initseverBad(int type,const struct sockaddr *addr,socklen_t  alen,int qlen)
 {
     int fd;
     int err=0;
@@ -35,3 +35,25 @@ errout:
 //
 //
 //TCP由于一些奇怪的地址复用规则，使的这个例子不完备。
+int initsever(int type,const struct sockaddr *addr,socklen_t  alen,int qlen)
+{
+    int fd,err;
+    int reuse=1;
+    if((fd=socket(addr->sa_family,type,0))<0)
+        return (-1);
+    if(setsockopt(fd,SOL_SOCKET,SO_REUSEADDR,&reuse,sizeof(int))<0)
+        goto errout;
+    if(bind(fd,addr,alen)<0)
+        goto errout;
+    if(type==SOCK_STREAM||type==SOCK_SEQPACKET)
+    {
+        if(listen (fd,alen)<0)
+            goto errout;
+    }
+    return (fd);
+errout:
+    err=errno;
+    close(fd);
+    errno=err;
+    return(-1);
+}

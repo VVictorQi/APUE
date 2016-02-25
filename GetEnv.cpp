@@ -9,3 +9,4 @@ int main(int argc,char **argv,char **env)
 	}
 
 }
+//simple if that to read the env value

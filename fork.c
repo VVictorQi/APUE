@@ -7,7 +7,7 @@ int main(int argc,char** argv)
 	int fd;
 	pid_t pid;
 	pid=fork();
-	if(pid==-1)
+	if(pid<0)
 	{
 	 	perror("fork");
 	}
@@ -15,7 +15,7 @@ int main(int argc,char** argv)
 	{	
 		wait(NULL);
 		exit(EXIT_FAILURE);
-
+//
 	}
 	else
 	{
